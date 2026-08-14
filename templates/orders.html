@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orders | DevOps Order Management</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📦 Your Orders</h1>
+
+        <p class="subtitle">
+            Orders stored in our database
+        </p>
+
+        {% if orders %}
+
+            <div class="card-container">
+
+                {% for order in orders %}
+
+                    <div class="card">
+
+                        <h2>Order #{{ order.id }}</h2>
+
+                        <p>
+                            <strong>Product:</strong>
+                            {{ order.product_name }}
+                        </p>
+
+                        <p class="price">
+                            ₹{{ order.price }}
+                        </p>
+
+                        <p class="status">
+                            Status: {{ order.status }}
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="card">
+
+                <h2>No Orders Yet 📭</h2>
+
+                <p>
+                    You haven't placed any orders yet.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/products" class="btn">
+            🛍️ View Products
+        </a>
+
+        <a href="/" class="btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>
