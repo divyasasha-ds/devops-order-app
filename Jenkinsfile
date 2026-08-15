@@ -5,13 +5,13 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running application tests...'
-                bat 'python -m py_compile app.py database.py'
+                sh 'python -m py_compile app.py database.py'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t devops-order-app:1.0 .'
+                sh 'docker build -t devops-order-app:1.0 .'
             }
         }
     }
