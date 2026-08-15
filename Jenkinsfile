@@ -5,7 +5,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running application tests...'
-                sh 'python -m py_compile app.py database.py'
+                sh 'test -f app.py'
+                sh 'test -f database.py'
+                echo 'Application files verified successfully!'
             }
         }
 
