@@ -11,9 +11,11 @@ pipeline {
             }
         }
 
-        stage('Build Check') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Application build check completed successfully!'
+                echo 'Building Docker image...'
+                sh 'docker build -t devops-order-app:1.0 .'
+                echo 'Docker image built successfully!'
             }
         }
     }
